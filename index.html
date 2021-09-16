@@ -45,16 +45,19 @@
 
             </div>
 
+            <section id="buttons">
+                <button class="filter" data-action="filter" data-field="G">Griffendor</button>
+            </section>
+
             <section id="student_container">
                 <h1>Students</h1>
     
                 <table id="list">
                   <thead>
-                    <tr>
-                      <th>House</th>
+                    <tr id="sorting">
+                      <th data-action="sort" data-sort-direction="asc" data-sort="house">House</th>
                       <th>First</th>
                       <th>Last</th>
-                      <th></th>
                     </tr>
                   </thead>
                   <tbody>

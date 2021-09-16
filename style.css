@@ -101,9 +101,12 @@ body {
   overflow: hidden;
 }
 
-#list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(25vw, 1fr));
+#buttons {
+  position: absolute;
+  height: 40vw;
+  z-index: 10;
+  top: 5vw;
+  left: 22vw;
 }
 
 h1 {
@@ -116,7 +119,7 @@ h1 {
 
 th {
   text-align: left;
-  font-family: "Tangerine", cursive;
-  font-size: 2vw;
+  /* font-family: "Tangerine", cursive; 
+  font-size: 2vw; */
   color: rgb(44, 14, 0);
 }

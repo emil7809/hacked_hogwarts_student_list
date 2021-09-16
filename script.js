@@ -14,6 +14,15 @@ const Student = {
 function start(){
     console.log("Start");
     loadJSON();
+    makeButtons();
+}
+
+function makeButtons(){
+    document.querySelectorAll("[data-action='filter']")
+    .forEach(button => button.addEventListener("click", selectFilter));
+
+    document.querySelectorAll("[data-action='sort']")
+    .forEach(button => button.addEventListener("click", selectSort));
 }
 
 function loadJSON() {
@@ -32,6 +41,12 @@ function prepareObjects(jsonData) {
 
     //exstrackt data from json objekt
     const fullname = jsonObject.fullname.trim().replace("-", " ");
+    
+    //house
+
+    const getHouse = jsonObject.house.trim();
+    const house = getHouse[0].toUpperCase();
+    student.house = house;
     
     //first name
     const firstSpace = fullname.indexOf(" ");
@@ -63,8 +78,63 @@ function prepareObjects(jsonData) {
     displayList();
 }
 
+function selectFilter(event) {
+    const filter = event.target.dataset.filter;
+    filterList(filter);
+}
+
+function filterList(filterBy) {
+    
+    let filteredList = allStudents;
+
+    if (filterBy === "G") {
+        filteredList = allStudents.filter(isG);
+    }
+}
+
+function isG(student) {
+    return student.house === "G";
+}
+
+function selectSort(event) {
+   const sortBy = event.target.dataset.sort;
+   const sortDir = event.target.dataset.sortDirection;
+   
+   //toggle direction 
+
+   if (sortDir === "asc") {
+       event.target.dataset.sortDirection = "desc"; 
+   } else {
+    event.target.dataset.sortDirection = "asc"; 
+   }
+
+   sortList(sortBy, sortDir);
+}
+
+function sortList(sortBy, sortDir) {
+    let sortedList = allStudents;
+    let direction = 1;
+
+    if (sortDir === "desc") {
+        direction = -1;
+    } else {
+        direction = -1;
+    }
+
+    sortedList = sortedList.sort(sortByChoice);
+
+    function sortByChoice (studentA, studentB) {
+        if (studentA[sortBy] < studentB[sortBy]) {
+            return -1 * direction;
+        } else {
+            return 1 * direction;
+        }
+    }
+
+    displayList(sortedList);
+}
+
 function displayList() {
-    console.log("display list")
     // clear the list
     document.querySelector("#list tbody").innerHTML = "";
 
@@ -73,13 +143,12 @@ function displayList() {
 }
 
 function displayStudents(student) {
-    console.log("display studets");
     
     // create clone
     const clone = document.querySelector("template#student").content.cloneNode(true);
 
     //set clone data
-    clone.querySelector("[data-field=house]").textContent = "⚫";
+    clone.querySelector("[data-field=house]").textContent = student.house;
     clone.querySelector("[data-field=firstName]").textContent = student.firstName;
     //clone.querySelector("[data-field=middleName]").textContent = student.middleName;
     //clone.querySelector("[data-field=nickName]").textContent = student.nickName;
