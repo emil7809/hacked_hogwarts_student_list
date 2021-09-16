@@ -46,7 +46,7 @@
             </div>
 
             <section id="buttons">
-                <button class="filter" data-action="filter" data-field="G">Griffendor</button>
+                <button class="filter" data-action="filter" data-field="G">Gryffindor</button>
             </section>
 
             <section id="student_container">
@@ -56,8 +56,8 @@
                   <thead>
                     <tr id="sorting">
                       <th data-action="sort" data-sort-direction="asc" data-sort="house">House</th>
-                      <th>First</th>
-                      <th>Last</th>
+                      <th data-action="sort" data-sort-direction="asc" data-sort="first">First</th>
+                      <th data-action="sort" data-sort-direction="asc" data-sort="last">Last</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -69,12 +69,9 @@
             
                 <template id="student">
                   <tr>
-                    <th data-field="house">House</th>
-                    <th data-field="firstName">First name</th>
-                    <!-- <th data-field="middleName">Middle name</th> -->
-                    <!-- <th data-field="nickName">Nick name</th> -->
-                    <th data-field="lastName">Last name</th>
-                    <!-- <th data-field="image">Image/photo filename</th> -->
+                    <th data-action="student" data-field="house">House</th>
+                    <th data-action="student" data-field="firstName">First name</th>
+                    <th data-action="student" data-field="lastName">Last name</th>
                   </tr>
                 </template>
             </section>
@@ -83,11 +80,18 @@
 
                 <div id="popup_container">
                     <div id="popup_sprite"></div>
+                    <div id="house_stripe_container">
+                        <div id="house_stripe_sprite"></div>
+                    </div>
+    
+                    <article id="popup_student">
+                        <p class="name"></p>
+                        <p class="house"></p>
+                        <p class="blood"></p>
+                    </article>
                 </div>
 
-                <div id="house_stripe_container">
-                    <div id="house_stripe_sprite"></div>
-                </div>
+                
                 
             </div>
 

@@ -8,11 +8,18 @@ const Student = {
     house: "",
     firstName: "",
     middleName: "",
-    //nickName: "",
+    nickName: "",
+
+    popupHouse: ""
 }
 
 function start(){
-    console.log("Start");
+    
+    document.querySelector("#the_popup").classList.add("hidden");
+
+    document.querySelector(".name").textContent = "Name: ";
+    document.querySelector(".house").textContent = "House: ";
+
     loadJSON();
     makeButtons();
 }
@@ -43,10 +50,11 @@ function prepareObjects(jsonData) {
     const fullname = jsonObject.fullname.trim().replace("-", " ");
     
     //house
-
     const getHouse = jsonObject.house.trim();
     const house = getHouse[0].toUpperCase();
     student.house = house;
+    const popupHouse = getHouse[0].toUpperCase()+getHouse.slice(1).toLocaleLowerCase();
+    student.popupHouse = popupHouse;
     
     //first name
     const firstSpace = fullname.indexOf(" ");
@@ -150,10 +158,27 @@ function displayStudents(student) {
     //set clone data
     clone.querySelector("[data-field=house]").textContent = student.house;
     clone.querySelector("[data-field=firstName]").textContent = student.firstName;
-    //clone.querySelector("[data-field=middleName]").textContent = student.middleName;
-    //clone.querySelector("[data-field=nickName]").textContent = student.nickName;
     clone.querySelector("[data-field=lastName]").textContent = student.lastName;
+    clone.querySelector("[data-field=lastName]").addEventListener("click", () => {
+        clickIt(student);
+    })
+    clone.querySelector("[data-field=firstName]").addEventListener("click", () => {
+        clickIt(student);
+    })
+    clone.querySelector("[data-field=house]").addEventListener("click", () => {
+        clickIt(student);
+    })
+    
 
     // append clone to list
     document.querySelector("#list tbody").appendChild(clone);
+}
+
+function clickIt(student){
+    document.querySelector("#the_popup").classList.remove("hidden");
+
+    document.querySelector(".name").textContent += student.firstName+student.middleName+student.nickName+" "+student.lastName;
+    document.querySelector(".house").textContent += student.popupHouse;
+
+    document.querySelector("#the_popup").addEventListener("click", start);
 }

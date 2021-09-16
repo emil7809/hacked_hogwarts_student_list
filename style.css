@@ -2,6 +2,36 @@ body {
   margin: 0;
 }
 
+#buttons {
+  position: absolute;
+  height: 40vw;
+  z-index: 10;
+  top: 6vw;
+  left: 22vw;
+}
+
+button {
+  background-color: rgba(255, 0, 0, 0);
+  border: none;
+  color: rgb(255, 179, 0);
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Tangerine", cursive;
+  font-size: 3vw;
+  color: rgb(44, 14, 0);
+  margin-bottom: 0.5vw;
+}
+
+th {
+  text-align: left;
+  /* font-family: "Tangerine", cursive; 
+  font-size: 2vw; */
+  color: rgb(44, 14, 0);
+}
+
 #screen {
   position: relative;
   width: 100vw;
@@ -101,25 +131,44 @@ body {
   overflow: hidden;
 }
 
-#buttons {
+#popup_container {
   position: absolute;
-  height: 40vw;
-  z-index: 10;
-  top: 5vw;
-  left: 22vw;
+  background-color: rgba(0, 0, 0, 0.445);
+  width: 100%;
+  height: 100%;
+  z-index: 40;
 }
 
-h1 {
-  text-align: center;
-  font-family: "Tangerine", cursive;
-  font-size: 3vw;
-  color: rgb(44, 14, 0);
-  margin-bottom: 0.5vw;
+#popup_sprite {
+  position: absolute;
+  background-image: url(png/popup.png);
+  background-size: cover;
+  width: 40vw;
+  height: 54vw;
+  left: 30vw;
+  top: 1vw;
+  z-index: 50;
 }
 
-th {
-  text-align: left;
-  /* font-family: "Tangerine", cursive; 
-  font-size: 2vw; */
-  color: rgb(44, 14, 0);
+#popup_student {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 55;
+}
+
+.house {
+  position: absolute;
+  left: 35vw;
+  top: 30vw;
+}
+
+.name {
+  position: absolute;
+  left: 35vw;
+  top: 28vw;
+}
+
+.hidden {
+  visibility: hidden;
 }
