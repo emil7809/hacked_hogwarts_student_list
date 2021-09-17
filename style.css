@@ -17,6 +17,10 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  color: antiquewhite;
+}
+
 h1 {
   text-align: center;
   font-family: "Tangerine", cursive;
@@ -29,6 +33,18 @@ th {
   text-align: left;
   /* font-family: "Tangerine", cursive; 
   font-size: 2vw; */
+  color: rgb(44, 14, 0);
+  cursor: pointer;
+}
+
+th:hover {
+  color: brown;
+}
+
+p {
+  text-align: left;
+  font-family: "Tangerine", cursive;
+  font-size: 2.5vw;
   color: rgb(44, 14, 0);
 }
 
@@ -131,6 +147,16 @@ th {
   overflow: hidden;
 }
 
+tbody {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#sorting {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 #popup_container {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.445);
@@ -157,16 +183,92 @@ th {
   z-index: 55;
 }
 
-.house {
+#house_stripe_container {
+  position: absolute;
+  width: 39.3vw;
+  height: 8vw;
+  left: 30.4vw;
+  top: 11vw;
+  background-color: rgb(121, 0, 0);
+  z-index: 51;
+}
+
+#house_stripe_sprite {
+  position: absolute;
+  width: 39.3vw;
+  height: 3vw;
+  top: 2.5vw;
+  background-color: rgb(221, 180, 0);
+  z-index: 52;
+}
+
+.img {
   position: absolute;
   left: 35vw;
-  top: 30vw;
+  top: 5vw;
+  height: 18vw;
+  width: 18vw;
+  background-color: rgb(235, 198, 129);
 }
 
 .name {
   position: absolute;
   left: 35vw;
-  top: 28vw;
+  top: 25vw;
+}
+
+.house {
+  position: absolute;
+  left: 35vw;
+  top: 29vw;
+}
+
+.blood {
+  position: absolute;
+  left: 35vw;
+  top: 33vw;
+}
+
+.prefect_box,
+.inquistorial_box,
+.expelled_box {
+  position: absolute;
+  left: 35vw;
+  height: 2vw;
+  width: 2vw;
+  background-color: rgb(236, 229, 215);
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.prefect_box {
+  top: 40vw;
+}
+
+.prefect {
+  position: absolute;
+  left: 38vw;
+  top: 37vw;
+}
+
+.inquistorial_box {
+  top: 44vw;
+}
+
+.inquistorial {
+  position: absolute;
+  left: 38vw;
+  top: 41vw;
+}
+
+.expelled_box {
+  top: 48vw;
+}
+
+.expelled {
+  position: absolute;
+  left: 38vw;
+  top: 45vw;
 }
 
 .hidden {

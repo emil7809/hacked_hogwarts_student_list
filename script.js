@@ -9,16 +9,19 @@ const Student = {
     firstName: "",
     middleName: "",
     nickName: "",
-
-    popupHouse: ""
+    img: "",
+    popupHouse: "",
+    blood: ""
 }
 
 function start(){
     
     document.querySelector("#the_popup").classList.add("hidden");
 
+    document.querySelector(".img").textContent = "";
     document.querySelector(".name").textContent = "Name: ";
     document.querySelector(".house").textContent = "House: ";
+    document.querySelector(".blood").textContent = "Blood-Status: ";
 
     loadJSON();
     makeButtons();
@@ -78,6 +81,10 @@ function prepareObjects(jsonData) {
     const lastName = getlastName[0].toUpperCase()+getlastName.slice(1).toLocaleLowerCase();
     student.lastName = lastName;
 
+    //img
+    const img = lastName.toLocaleLowerCase().replace(" ", "")+"_"+firstName[0].toLowerCase()+".png";
+    student.img = img;
+
     //add the objekt to the global array
     allStudents.push(student);
 
@@ -92,12 +99,15 @@ function selectFilter(event) {
 }
 
 function filterList(filterBy) {
+   
     
     let filteredList = allStudents;
-
+    console.log("filteredList", filteredList);
     if (filterBy === "G") {
         filteredList = allStudents.filter(isG);
     }
+
+    displayList(filterList);
 }
 
 function isG(student) {
@@ -143,6 +153,7 @@ function sortList(sortBy, sortDir) {
 }
 
 function displayList() {
+   
     // clear the list
     document.querySelector("#list tbody").innerHTML = "";
 
@@ -151,7 +162,6 @@ function displayList() {
 }
 
 function displayStudents(student) {
-    
     // create clone
     const clone = document.querySelector("template#student").content.cloneNode(true);
 
@@ -174,11 +184,31 @@ function displayStudents(student) {
     document.querySelector("#list tbody").appendChild(clone);
 }
 
+function image(){
+    
+}
+
 function clickIt(student){
     document.querySelector("#the_popup").classList.remove("hidden");
 
+    //document.querySelector("img").src = medieurl + ;
+    document.querySelector(".img").textContent += student.img;
     document.querySelector(".name").textContent += student.firstName+student.middleName+student.nickName+" "+student.lastName;
     document.querySelector(".house").textContent += student.popupHouse;
+    document.querySelector(".blood").textContent += "lala";
+
+    document.querySelector(".prefect").textContent = "Prefect";
+    document.querySelector(".inquistorial").textContent = "Inquistorial";
+    document.querySelector(".expelled").textContent = "Expelled";
+
 
     document.querySelector("#the_popup").addEventListener("click", start);
+
+    banner();
 }
+
+ function banner() {
+    if (student.popupHouse === "Gryffindor") {
+        document.querySelector("#house_stripe_container").style.backgroundColor = 'green';
+    }
+ }
