@@ -47,6 +47,10 @@
 
             <section id="buttons">
                 <button class="filter" data-action="filter" data-field="G">Gryffindor</button>
+                <button class="filter" data-action="filter" data-field="H">Hufflepuff</button>
+                <button class="filter" data-action="filter" data-field="R">Ravenclaw</button>
+                <button class="filter" data-action="filter" data-field="S">Slytherin</button>
+                <button class="filter" data-action="filter" data-field="*">All Houses</button>
             </section>
 
             <section id="student_container">
@@ -55,9 +59,9 @@
                 <table id="list">
                   <thead>
                     <tr id="sorting">
+                      <th data-action="sort" data-sort-direction="asc" data-sort="firstName">First Name</th>
+                      <th data-action="sort" data-sort-direction="asc" data-sort="lastName">Last Name</th>
                       <th data-action="sort" data-sort-direction="asc" data-sort="house">House</th>
-                      <th data-action="sort" data-sort-direction="asc" data-sort="first">First</th>
-                      <th data-action="sort" data-sort-direction="asc" data-sort="last">Last</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -85,8 +89,10 @@
                     </div>
     
                     <article id="popup_student">
-                        <img src="" alt="student">
-                        <p class="img"></p>
+                        <div class="img">
+                            <o>Hvad fanden</o>
+                            <img src="" alt="student image" width="100" height="100">
+                        </div>
                         <p class="name"></p>
                         <p class="house"></p>
                         <p class="blood"></p>

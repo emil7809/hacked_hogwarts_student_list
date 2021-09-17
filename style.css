@@ -4,10 +4,13 @@ body {
 
 #buttons {
   position: absolute;
-  height: 40vw;
   z-index: 10;
-  top: 6vw;
+  top: 1vw;
   left: 22vw;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 0.2vw;
+  z-index: 60;
 }
 
 button {
@@ -15,6 +18,7 @@ button {
   border: none;
   color: rgb(255, 179, 0);
   cursor: pointer;
+  text-align: left;
 }
 
 button:hover {
@@ -22,11 +26,12 @@ button:hover {
 }
 
 h1 {
-  text-align: center;
+  text-align: left;
   font-family: "Tangerine", cursive;
-  font-size: 3vw;
+  font-size: 5vw;
   color: rgb(44, 14, 0);
-  margin-bottom: 0.5vw;
+  margin-bottom: 1vw;
+  margin-left: 9vw;
 }
 
 th {
@@ -95,7 +100,7 @@ p {
   width: 10vw;
   height: 20vw;
   left: 20vw;
-  top: 5vw;
+  top: 0.5vw;
 }
 
 #sort_container {
@@ -142,19 +147,23 @@ p {
   position: absolute;
   height: 40vw;
   z-index: 10;
-  top: 9vw;
-  left: 20vw;
+  top: 7vw;
+  left: 19.2vw;
   overflow: hidden;
 }
 
 tbody {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 0.5vw 1.5vw;
 }
 
 #sorting {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 8vw 8vw 8vw;
+  margin-bottom: 1.5vw;
+  margin-left: 4vw;
+  font-size: 1.2vw;
 }
 
 #popup_container {
@@ -208,7 +217,7 @@ tbody {
   top: 5vw;
   height: 18vw;
   width: 18vw;
-  background-color: rgb(235, 198, 129);
+  background-color: red;
 }
 
 .name {

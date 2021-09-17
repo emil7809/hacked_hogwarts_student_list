@@ -60,19 +60,23 @@ function prepareObjects(jsonData) {
     student.popupHouse = popupHouse;
     
     //first name
+    
     const firstSpace = fullname.indexOf(" ");
+    
     const firstName = fullname[0].toUpperCase()+fullname.slice(1).toLowerCase().substring(0, firstSpace);
     if (fullname.indexOf(" ") >= 0) {
         student.firstName = firstName;
     };
 
     //middle and nick name
-    const getMiddleName = fullname.substring(fullname.indexOf(" ")+1, fullname.lastIndexOf(" "));
-    if (getMiddleName.includes('"')) {
+    const middleName = fullname.substring(fullname.indexOf(" ")+1, fullname.lastIndexOf(" "));
+    if (middleName.includes('"')) {
         student.nickName = fullname.substring(fullname.indexOf(" ")+1,fullname.lastIndexOf(" "));
     } else {
-        //student.middleName = getMiddleName[0].toUpperCase()+getMiddleName.slice(1).toLowerCase();
-        student.middleName = getMiddleName;
+
+        //student.middleName = middleName[0].toUpperCase()+middleName.slice(1).toLowerCase();
+        student.middleName = middleName;
+        
     }
 
     //last name 
@@ -82,42 +86,62 @@ function prepareObjects(jsonData) {
     student.lastName = lastName;
 
     //img
-    const img = lastName.toLocaleLowerCase().replace(" ", "")+"_"+firstName[0].toLowerCase()+".png";
+    const img = "img/" + lastName.toLocaleLowerCase().replace(" ", "")+"_"+firstName[0].toLowerCase()+".png";
+
     student.img = img;
+    console.log(img);
 
     //add the objekt to the global array
     allStudents.push(student);
 
     });
-
-    displayList();
+    displayList(allStudents);
 }
 
 function selectFilter(event) {
-    const filter = event.target.dataset.filter;
+    
+    const filter = event.target.dataset.field;
     filterList(filter);
+
+    console.log(filter)
+    console.log(event.target.dataset)
 }
 
 function filterList(filterBy) {
-   
+   console.log(filterBy);
     
     let filteredList = allStudents;
-    console.log("filteredList", filteredList);
+    
     if (filterBy === "G") {
         filteredList = allStudents.filter(isG);
-    }
+     } else if (filterBy === "H") {
+        filteredList = allStudents.filter(isH);
+     } else if (filterBy === "R") {
+        filteredList = allStudents.filter(isR);
+     }
 
-    displayList(filterList);
+    console.log("filteredList", filteredList);
+
+    displayList(filteredList);
 }
 
 function isG(student) {
     return student.house === "G";
 }
 
+function isH(student) {
+    return student.house === "H";
+}
+
+function isR(student) {
+    return student.house === "R";
+}
+
 function selectSort(event) {
+
    const sortBy = event.target.dataset.sort;
    const sortDir = event.target.dataset.sortDirection;
-   
+   console.log(sortBy, sortDir);
    //toggle direction 
 
    if (sortDir === "asc") {
@@ -136,7 +160,7 @@ function sortList(sortBy, sortDir) {
     if (sortDir === "desc") {
         direction = -1;
     } else {
-        direction = -1;
+        direction = 1;
     }
 
     sortedList = sortedList.sort(sortByChoice);
@@ -152,13 +176,13 @@ function sortList(sortBy, sortDir) {
     displayList(sortedList);
 }
 
-function displayList() {
+function displayList(studenstToDisplay) {
    
     // clear the list
     document.querySelector("#list tbody").innerHTML = "";
 
     // build a new list
-    allStudents.forEach(displayStudents);
+    studenstToDisplay.forEach(displayStudents);
 }
 
 function displayStudents(student) {
@@ -192,7 +216,7 @@ function clickIt(student){
     document.querySelector("#the_popup").classList.remove("hidden");
 
     //document.querySelector("img").src = medieurl + ;
-    document.querySelector(".img").textContent += student.img;
+    document.querySelector("img").src = student.img;
     document.querySelector(".name").textContent += student.firstName+student.middleName+student.nickName+" "+student.lastName;
     document.querySelector(".house").textContent += student.popupHouse;
     document.querySelector(".blood").textContent += "lala";
