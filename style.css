@@ -10,7 +10,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 0.2vw;
-  z-index: 60;
+  z-index: 40;
 }
 
 button {
@@ -19,6 +19,7 @@ button {
   color: rgb(255, 179, 0);
   cursor: pointer;
   text-align: left;
+  font-size: 1.1vw;
 }
 
 button:hover {
@@ -36,8 +37,7 @@ h1 {
 
 th {
   text-align: left;
-  /* font-family: "Tangerine", cursive; 
-  font-size: 2vw; */
+  font-size: 1.3vw;
   color: rgb(44, 14, 0);
   cursor: pointer;
 }
@@ -73,15 +73,6 @@ p {
   background-size: cover;
   z-index: 0;
 }
-
-/* #the_book {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-  overflow: hidden;
-  z-index: 5;
-} */
 
 #book_container {
   position: absolute;
@@ -155,7 +146,7 @@ p {
 tbody {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 0.5vw 1.5vw;
+  grid-gap: 0.5vw 2vw;
 }
 
 #sorting {
@@ -198,7 +189,6 @@ tbody {
   height: 8vw;
   left: 30.4vw;
   top: 11vw;
-  background-color: rgb(121, 0, 0);
   z-index: 51;
 }
 
@@ -207,17 +197,15 @@ tbody {
   width: 39.3vw;
   height: 3vw;
   top: 2.5vw;
-  background-color: rgb(221, 180, 0);
   z-index: 52;
 }
 
-.img {
+img {
   position: absolute;
   left: 35vw;
   top: 5vw;
   height: 18vw;
   width: 18vw;
-  background-color: red;
 }
 
 .name {
