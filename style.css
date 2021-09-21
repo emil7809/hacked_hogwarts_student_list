@@ -114,6 +114,17 @@ p {
   top: 1.3vw;
 }
 
+input {
+  position: absolute;
+  width: 8vw;
+  height: 8vw;
+  top: 1vw;
+  left: 1.2vw;
+  background-color: rgba(0, 255, 255, 0);
+  border-radius: 100vw;
+  font-size: 1.5vw;
+}
+
 #ex_container {
   position: absolute;
   background-image: url(png/ex.png);
@@ -208,6 +219,14 @@ img {
   width: 18vw;
 }
 
+.x {
+  position: absolute;
+  left: 65vw;
+  top: 1vw;
+  z-index: 52;
+  cursor: pointer;
+}
+
 .name {
   position: absolute;
   left: 35vw;
@@ -236,6 +255,8 @@ img {
   background-color: rgb(236, 229, 215);
   border: 1px solid black;
   cursor: pointer;
+  text-align: center;
+  font-size: 2vw;
 }
 
 .prefect_box {
@@ -266,6 +287,24 @@ img {
   position: absolute;
   left: 38vw;
   top: 45vw;
+}
+
+#popup_template {
+  position: absolute;
+  width: 40vw;
+  height: 54vw;
+  left: 30vw;
+  top: 1vw;
+  z-index: 50;
+}
+
+#box {
+  position: absolute;
+  width: 40vw;
+  height: 54vw;
+  left: 30vw;
+  top: 1vw;
+  z-index: 50;
 }
 
 .hidden {
