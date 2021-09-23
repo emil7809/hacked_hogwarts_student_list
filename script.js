@@ -8,6 +8,8 @@ const expelledStudents = [];
 let halfbloodFamilies = [];
 let purebloodFamilies = [];
 
+let systemHacked = false;
+
 const Student = {
   house: "",
   firstName: "",
@@ -30,10 +32,29 @@ function start() {
   document.querySelector(".blood").textContent = "Blood-Status: ";
 
   document.querySelector("#search").addEventListener("input", searchImput);
+  document.querySelector("#hack").addEventListener("click", hackIt);
 
   getFamilies();
   loadJSON();
   makeButtons();
+}
+
+function hackIt() {
+  console.log("Welcome");
+  systemHacked = true;
+
+  const me = Object.create(Student);
+
+  me.firstName = "Emily";
+  me.nickName = " Cutiepie";
+  me.lastName = "Hoolahan";
+  me.house = "H";
+  me.popupHouse = "Hufflepuff";
+
+  me.id = allStudents.length;
+  allStudents.push(me);
+
+  displayList(allStudents);
 }
 
 function searchImput(evt) {
@@ -171,10 +192,10 @@ function filterList(filterBy) {
     filteredList = allStudents.filter(isS);
   } else if (filterBy === "P") {
     filteredList = allStudents.filter(isP);
+  }  else if (filterBy === "I") {
+    filteredList = allStudents.filter(isI);
   } else if (filterBy === "E") {
     filteredList = expelledStudents.filter(isE);
-  } else if (filterBy === "I") {
-    filteredList = allStudents.filter(isI);
   }
 
   displayList(filteredList);
@@ -252,6 +273,8 @@ function displayList(studenstToDisplay) {
 
   // build a new list
   studenstToDisplay.forEach(displayStudents);
+
+  console.log(expelledStudents);
 }
 
 function displayStudents(student) {
@@ -278,11 +301,34 @@ function displayStudents(student) {
 
   // append clone to list
   document.querySelector("#list tbody").appendChild(clone);
+
+  showNumberOfStudents();
 }
 
 function popUp(student) {
   //show pop up
   document.querySelector("#the_popup").classList.remove("hidden");
+
+  //X marks the spot -expelled 
+  if (student.expelled === true) {
+    document.querySelector(".expelled_box").textContent = "X";
+  } else {
+    document.querySelector(".expelled_box").textContent = "";
+  }
+  
+  //X marks the spot - prefects 
+  if (student.prefect === true) {
+    document.querySelector(".prefect_box").textContent = "X";
+  } else {
+    document.querySelector(".prefect_box").textContent = "";
+  }
+
+   //X marks the spot - prefects 
+   if (student.inquisitorialSquad === true) {
+    document.querySelector(".inquistorial_box").textContent = "X";
+  } else {
+    document.querySelector(".inquistorial_box").textContent = "";
+  }
 
   // create deatils - full name
   document.querySelector(".name").textContent +=
@@ -302,6 +348,11 @@ function popUp(student) {
     student.bloodstatus = "Halfblood";
   } else {
     student.bloodstatus = "Muggle";
+  }
+
+  //HACK
+  if (systemHacked === true) {
+    student.bloodstatus = hackedBlood();
   }
 
   //display blood status
@@ -350,7 +401,11 @@ function popUp(student) {
   }
 
   // close popup
-  document.querySelector(".x").addEventListener("click", (event) => {
+  document.querySelector(".x").addEventListener("click", closeX);
+  
+  function closeX() {
+    document.querySelector(".x").removeEventListener("click", closeX);
+
     document.querySelector("#the_popup").classList.add("hidden");
 
     document.querySelector(".name").textContent = "Name: ";
@@ -361,26 +416,24 @@ function popUp(student) {
     document.querySelector(".prefect_box").textContent = "";
     document.querySelector(".inquistorial_box").textContent = "";
 
-    document
-      .querySelector(".prefect_box")
-      .removeEventListener("click", clickPrefeckt);
-
-    document
-      .querySelector(".inquistorial_box")
-      .removeEventListener("click", clickInquistorialBox);
+    document.querySelector(".prefect_box").removeEventListener("click", clickPrefeckt);
+    document.querySelector(".inquistorial_box").removeEventListener("click", clickInquistorialBox);
 
     displayList(allStudents);
-  });
+  };
 
-  //expelStudent
-  document
-    .querySelector(".expelled_box")
-    .addEventListener("click", expelStudent);
+  //expelStudent - hack it
 
-  function expelStudent() {
+  if (student.firstName === "Emily") {
+    console.log("lol nope");
+  } else {
     document
       .querySelector(".expelled_box")
-      .removeEventListener("click", expelStudent);
+      .addEventListener("click", expelStudent);
+  }
+
+  function expelStudent() {
+    document.querySelector(".expelled_box").removeEventListener("click", expelStudent);
 
     expelledStudents.push(
       allStudents.splice(
@@ -415,10 +468,12 @@ function popUp(student) {
     .addEventListener("click", clickInquistorialBox);
 
   function clickInquistorialBox() {
-    if (student.inquisitorialSquad === true) {
-      student.inquisitorialSquad = false;
+    if (systemHacked === true) {
+      hackedI();
     } else if (student.house === "S" || student.bloodstatus === "Pureblood") {
       makeinquisitorialSquad(student);
+    } else if (student.inquisitorialSquad === true) {
+      student.inquisitorialSquad = false;
     } else {
       sorry();
     }
@@ -439,7 +494,6 @@ function tryToMakeStudentPrefeckt(selectedStudent) {
     console.log("there can be only two pr. house");
     removeAorB(prefeckts[0], prefeckts[1]);
   } else {
-    console.log("lålå");
     makePrefeckt(selectedStudent);
   }
 
@@ -500,11 +554,58 @@ function tryToMakeStudentPrefeckt(selectedStudent) {
 }
 
 function makeinquisitorialSquad(student) {
+  console.log("You are good enough");
   student.inquisitorialSquad = true;
   document.querySelector(".inquistorial_box").textContent = "X";
-  console.log(student);
 }
 
 function sorry() {
   console.log("You are not good enought!!");
+  document.querySelector(".inquistorial_box").textContent = "";
+}
+
+function hackedBlood() {
+  let randBlood = Math.round(Math.random() * 2);
+
+  if (randBlood === 0) {
+    return "Pureblood";
+  } else if (randBlood === 1) {
+    return "Muggle";
+  } else {
+    return "Halfblood";
+  }
+}
+
+function hackedI() {
+  student.inquisitorialSquad = true;
+  document.querySelector(".inquistorial_box").textContent = "X";
+  setTimeout(sorry, 5000);
+}
+
+function showNumberOfStudents() {
+  const Gstutents = allStudents.filter(
+    (student) => student.house === "G"
+  ).length;
+
+  document.querySelector("#Gs").textContent = Gstutents;
+
+  const Hstutents = allStudents.filter(
+    (student) => student.house === "H"
+  ).length;
+
+  document.querySelector("#Hs").textContent = Hstutents;
+
+  const Rstutents = allStudents.filter(
+    (student) => student.house === "R"
+  ).length;
+
+  document.querySelector("#Rs").textContent = Rstutents;
+
+  const Sstutents = allStudents.filter(
+    (student) => student.house === "S"
+  ).length;
+
+  document.querySelector("#Ss").textContent = Sstutents;
+
+  document.querySelector("#allS").textContent = allStudents.length;
 }

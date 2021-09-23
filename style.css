@@ -332,6 +332,28 @@ img {
   margin: 1vw;
 }
 
+#hack {
+  position: absolute;
+  width: 3vw;
+  height: 3vw;
+  background-color: deeppink;
+  top: 0;
+}
+
+#desplay_number_of_students {
+  position: absolute;
+  width: 20vw;
+  border: 1px solid black;
+  top: 13vw;
+  left: 55vw;
+}
+
+#number_container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-left: 2.5vw;
+}
+
 .hidden {
   visibility: hidden;
 }
