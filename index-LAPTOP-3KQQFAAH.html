@@ -52,12 +52,11 @@
                 <button class="filter" data-action="filter" data-field="H">Hufflepuff</button>
                 <button class="filter" data-action="filter" data-field="R">Ravenclaw</button>
                 <button class="filter" data-action="filter" data-field="S">Slytherin</button>
-                <button class="filter" data-action="filter" data-field="*">All Student</button>
+                <button class="filter" data-action="filter" data-field="*">All Houses</button>
             </section>
 
             <section id="buttons2">
                 <button class="filter" data-action="filter" data-field="P">Prefeckt</button>
-                <button class="filter" data-action="filter" data-field="I">Inquisitorial</button>
             </section>
 
             <section id="buttons3">
@@ -116,20 +115,18 @@
                  </section>
                 </div>
 
-                <div id="warning_container" class="warning hidden">
+                <div id="remove_warning" class="container hidden">
                     <div class="dialog">
-                      <button class="closebutton">X</button>
-                      <h1>Warning</h1>
-                      <p>There can not be anymore that two Prefeckts in one House. <br>
-                      do you want to remove the exsisting Prefeckt?</p>
-                      <div class="sidebydide">
-                        <button id="remove_A">Remove <span data-field="prefectA">A</span></button>
-                        <button id="remove_B">Remove <span data-field="prefectB">B</span></button>
-                      </div>
-                      
+                        <button class="x2">X</button>
+                        <h1>Warning</h1>
+                        <p>There can only be two Prefeckts in each House <br>
+                        Please seleck who you wish to remove as prefeckt</p>
+                        <div class="warning_button_container">
+                            <button id="remove_A">Remove:  <span data-field="winnerA">A</span></button>
+                            <button id="remove_B">Remove:  <span data-field="winnerB">A</span></button>
+                        </div>
                     </div>
                 </div>
-                
             </div>
 
         </div>

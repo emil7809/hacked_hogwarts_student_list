@@ -5,9 +5,6 @@ window.addEventListener("DOMContentLoaded", start);
 const allStudents = [];
 const expelledStudents = [];
 
-let halfbloodFamilies = [];
-let purebloodFamilies = [];
-
 const Student = {
   house: "",
   firstName: "",
@@ -15,11 +12,10 @@ const Student = {
   nickName: "",
   img: "",
   popupHouse: "",
-  bloodstatus: "",
-  expelled: false,
+  blood: "",
+  expelled: "",
   id: "",
   prefect: false,
-  inquisitorialSquad: false,
 };
 
 function start() {
@@ -31,7 +27,6 @@ function start() {
 
   document.querySelector("#search").addEventListener("input", searchImput);
 
-  getFamilies();
   loadJSON();
   makeButtons();
 }
@@ -65,21 +60,6 @@ function loadJSON() {
     .then((jsonData) => {
       prepareObjects(jsonData);
     });
-}
-
-function getFamilies() {
-  fetch("https://petlatkea.dk/2021/hogwarts/families.json")
-    .then((response) => response.json())
-    .then((data) => prepareFamilies(data));
-}
-
-function prepareFamilies(familyData) {
-  halfbloodFamilies = familyData.half;
-  halfbloodFamilies.forEach((elm) => {
-    const indexOfFamily = familyData.pure.indexOf(elm);
-    familyData.pure.splice(indexOfFamily, 1);
-  });
-  purebloodFamilies = familyData.pure;
 }
 
 function prepareObjects(jsonData) {
@@ -149,7 +129,6 @@ function prepareObjects(jsonData) {
     //add the objekt to the global array
     allStudents.push(student);
   });
-
   displayList(allStudents);
 }
 
@@ -171,10 +150,6 @@ function filterList(filterBy) {
     filteredList = allStudents.filter(isS);
   } else if (filterBy === "P") {
     filteredList = allStudents.filter(isP);
-  } else if (filterBy === "E") {
-    filteredList = expelledStudents.filter(isE);
-  } else if (filterBy === "I") {
-    filteredList = allStudents.filter(isI);
   }
 
   displayList(filteredList);
@@ -198,14 +173,6 @@ function isS(student) {
 
 function isP(student) {
   return student.prefect === true;
-}
-
-function isI(student) {
-  return student.inquisitorialSquad === true;
-}
-
-function isE(student) {
-  return student.expelled === true;
 }
 
 function selectSort(event) {
@@ -296,20 +263,11 @@ function popUp(student) {
   document.querySelector(".house").textContent += student.popupHouse;
 
   // create deatils - blood
-  if (purebloodFamilies.includes(student.lastName)) {
-    student.bloodstatus = "Pureblood";
-  } else if (halfbloodFamilies.includes(student.lastName)) {
-    student.bloodstatus = "Halfblood";
-  } else {
-    student.bloodstatus = "Muggle";
-  }
-
-  //display blood status
-  document.querySelector(".blood").textContent += student.bloodstatus;
+  document.querySelector(".blood").textContent += "lala";
 
   // insert check box tekst
   document.querySelector(".prefect").textContent = "Prefect";
-  document.querySelector(".inquistorial").textContent = "Inquisitorial Squad";
+  document.querySelector(".inquistorial").textContent = "Inquistorial";
   document.querySelector(".expelled").textContent = "Expelled";
 
   // create deatils - image
@@ -359,15 +317,6 @@ function popUp(student) {
 
     document.querySelector(".expelled_box").textContent = "";
     document.querySelector(".prefect_box").textContent = "";
-    document.querySelector(".inquistorial_box").textContent = "";
-
-    document
-      .querySelector(".prefect_box")
-      .removeEventListener("click", clickPrefeckt);
-
-    document
-      .querySelector(".inquistorial_box")
-      .removeEventListener("click", clickInquistorialBox);
 
     displayList(allStudents);
   });
@@ -390,11 +339,18 @@ function popUp(student) {
         1
       )[0]
     );
-    student.expelled = true;
     this.textContent = "X";
   }
 
   // make student prefeckt
+
+  //Prefeckt filter
+  // if (student.prefeckts === false) {
+  //   document.querySelector("[data-field=P]").dataset.prefect = true;
+  // } else {
+  //   document.querySelector("[data-field=P]").dataset.prefect = false;
+  // }
+
   document
     .querySelector(".prefect_box")
     .addEventListener("click", clickPrefeckt);
@@ -405,106 +361,78 @@ function popUp(student) {
     } else {
       tryToMakeStudentPrefeckt(student);
     }
-
-    displayList(allStudents);
-  }
-
-  //Make student inquistorial
-  document
-    .querySelector(".inquistorial_box")
-    .addEventListener("click", clickInquistorialBox);
-
-  function clickInquistorialBox() {
-    if (student.inquisitorialSquad === true) {
-      student.inquisitorialSquad = false;
-    } else if (student.house === "S" || student.bloodstatus === "Pureblood") {
-      makeinquisitorialSquad(student);
-    } else {
-      sorry();
-    }
   }
 }
 
 function tryToMakeStudentPrefeckt(selectedStudent) {
   //mkae variables
-
   const prefeckts = allStudents.filter((student) => student.prefect);
-  //const numberOfPrefeckts = prefeckts.length;
+  const numberOfPrefeckts = prefeckts.length;
   const other = prefeckts.filter(
     (student) => student.house === selectedStudent.house
   );
 
   //if there is allready 2 prefeckts in the same house
   if (other.length >= 2) {
-    console.log("there can be only two pr. house");
     removeAorB(prefeckts[0], prefeckts[1]);
   } else {
-    console.log("lålå");
     makePrefeckt(selectedStudent);
   }
 
   function removeAorB(prefecktsA, prefecktsB) {
+    console.log("lålå");
     //ask the user to ignore or remove A or B
-    document.querySelector("#warning_container").classList.remove("hidden");
+    document.querySelector("#remove_warning").classList.remove("hidden");
     document
-      .querySelector("#warning_container")
+      .querySelector("#remove_warning")
       .addEventListener("click", closeDialog);
     document.querySelector("#remove_A").addEventListener("click", clickRemoveA);
     document.querySelector("#remove_B").addEventListener("click", clickRemoveB);
 
-    console.log(prefecktsA.firstName);
-    console.log(prefecktsB.firstName);
     //show names on buttons
-    document.querySelector("#warning_container #remove_A span").textContent =
-      prefecktsA.firstName + prefecktsB.lastName;
-    document.querySelector("#warning_container #remove_B span").textContent =
-      prefecktsB.firstName + prefecktsB.lastName;
+    document.querySelector(
+      "#remove_warning [data-field=prefecktA]"
+    ).textContent = prefecktsA.name;
+    document.querySelector(
+      "#remove_warning [data-field=prefecktB]"
+    ).textContent = prefecktsB.name;
 
     //if user ignor - do nothing
     function closeDialog() {
-      document.querySelector("#warning_container").classList.add("hidden");
+      document.querySelector("remove_warning").classList.add("hidden");
       document
-        .querySelector("#warning_container")
+        .querySelector("remove_warning")
         .removeEventListener("click", closeDialog);
       document
-        .querySelector("#remove_A")
+        .querySelector("remove_A")
         .removeEventListener("click", clickRemoveA);
       document
-        .querySelector("#remove_B")
+        .querySelector("remove_B")
         .removeEventListener("click", clickRemoveB);
     }
 
     //if remove A
     function clickRemoveA() {
       removePrefeckt(prefecktsA);
-      makePrefeckt(prefecktsA);
+      makePrefeckt(selectedStudent);
       closeDialog();
     }
 
     //if remove B
     function clickRemoveB() {
       removePrefeckt(prefecktsB);
-      makePrefeckt(prefecktsB);
+      makePrefeckt(selectedStudent);
       closeDialog();
     }
   }
 
   function removePrefeckt(prefeckt) {
-    prefeckt.prefeckt = false;
+    prefeckt.prefect = false;
   }
 
   function makePrefeckt(student) {
     student.prefect = true;
     document.querySelector(".prefect_box").textContent = "X";
+    console.log(student);
   }
-}
-
-function makeinquisitorialSquad(student) {
-  student.inquisitorialSquad = true;
-  document.querySelector(".inquistorial_box").textContent = "X";
-  console.log(student);
-}
-
-function sorry() {
-  console.log("You are not good enought!!");
 }
