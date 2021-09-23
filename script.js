@@ -32,7 +32,7 @@ function start() {
   document.querySelector(".blood").textContent = "Blood-Status: ";
 
   document.querySelector("#search").addEventListener("input", searchImput);
-  document.querySelector("#hack").addEventListener("click", hackIt);
+  document.querySelector("#unit").addEventListener("click", hackIt);
 
   getFamilies();
   loadJSON();
@@ -41,6 +41,8 @@ function start() {
 
 function hackIt() {
   console.log("Welcome");
+
+  document.querySelector("#unit").removeEventListener("click", hackIt);
   systemHacked = true;
 
   const me = Object.create(Student);
@@ -50,6 +52,7 @@ function hackIt() {
   me.lastName = "Hoolahan";
   me.house = "H";
   me.popupHouse = "Hufflepuff";
+  me.img = "img/hoolahan_e.png";
 
   me.id = allStudents.length;
   allStudents.push(me);
@@ -182,6 +185,8 @@ function selectFilter(event) {
 function filterList(filterBy) {
   let filteredList = allStudents;
 
+  document.querySelector("#desplay_number_of_students").classList.add("hidden");
+
   if (filterBy === "G") {
     filteredList = allStudents.filter(isG);
   } else if (filterBy === "H") {
@@ -190,6 +195,8 @@ function filterList(filterBy) {
     filteredList = allStudents.filter(isR);
   } else if (filterBy === "S") {
     filteredList = allStudents.filter(isS);
+  } else if (filterBy === "*") {
+    filteredList = allStudents.filter(all);
   } else if (filterBy === "P") {
     filteredList = allStudents.filter(isP);
   }  else if (filterBy === "I") {
@@ -215,6 +222,11 @@ function isR(student) {
 
 function isS(student) {
   return student.house === "S";
+}
+
+function all() {
+  document.querySelector("#desplay_number_of_students").classList.remove("hidden");
+  return allStudents;
 }
 
 function isP(student) {
@@ -579,7 +591,7 @@ function hackedBlood() {
 function hackedI() {
   student.inquisitorialSquad = true;
   document.querySelector(".inquistorial_box").textContent = "X";
-  setTimeout(sorry, 5000);
+  setTimeout(sorry, 1000);
 }
 
 function showNumberOfStudents() {
@@ -608,4 +620,5 @@ function showNumberOfStudents() {
   document.querySelector("#Ss").textContent = Sstutents;
 
   document.querySelector("#allS").textContent = allStudents.length;
+
 }

@@ -322,38 +322,679 @@ img {
 
 .dialog {
   box-shadow: 3px 3px 8px black;
-  border-radius: 12px;
-  padding: 2em;
+  padding: 2vw;
   top: 15vw;
   left: 30vw;
   background-color: rgb(216, 206, 185);
   position: absolute;
   text-align: center;
-  margin: 1vw;
+  margin: 0.5vw;
+}
+
+#warning_container .closebutton {
+  margin-left: 35vw;
+  position: absolute;
+  top: -1vw;
+  left: 8vw;
+}
+
+#warning_container h1 {
+  margin: 0;
+  text-align: center;
+}
+
+#warning_container p {
+  margin: 3vw;
+  text-align: center;
+}
+
+#warning_container button {
+  color: black;
+  margin-top: 3vw;
+}
+
+#warning_container button:hover {
+  color: #f3ef53;
+}
+
+#warning_container #wax {
+  background-image: url(png/wax.png);
+  background-size: cover;
+  position: absolute;
+  width: 5vw;
+  height: 5vw;
+  left: 39vw;
+  top: 19vw;
 }
 
 #hack {
   position: absolute;
-  width: 3vw;
-  height: 3vw;
-  background-color: deeppink;
+  width: 100%;
+  height: 56vw;
   top: 0;
 }
 
 #desplay_number_of_students {
   position: absolute;
   width: 20vw;
-  border: 1px solid black;
   top: 13vw;
   left: 55vw;
+}
+
+#number_img_container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1vw;
+}
+
+#Gimg {
+  background-image: url(png/g.png);
+  background-size: cover;
+  width: 3.1vw;
+  height: 3.5vw;
+}
+
+#Himg {
+  background-image: url(png/h.png);
+  background-size: cover;
+  width: 3.1vw;
+  height: 3.5vw;
+}
+
+#Rimg {
+  background-image: url(png/r.png);
+  background-size: cover;
+  width: 3.2vw;
+  height: 3.5vw;
+}
+
+#Simg {
+  background-image: url(png/s.png);
+  background-size: cover;
+  width: 3.2vw;
+  height: 3.5vw;
+}
+
+#allImg {
+  background-image: url(png/seal.png);
+  background-size: cover;
+  width: 3.2vw;
+  height: 3.5vw;
 }
 
 #number_container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  margin-left: 2.5vw;
+  margin-top: -2.5vw;
+  margin-left: 0.8vw;
+  grid-gap: 2vw;
 }
 
 .hidden {
   visibility: hidden;
+}
+
+/**/
+/**/
+/**/
+/**/
+/**/
+
+#unit {
+  position: absolute;
+  position: fixed;
+  left: 1vw;
+  top: 10vw;
+  width: 2vw;
+  height: 2vw;
+  background-color: #f3ef53;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(115, 175, 64, 1), 0 0 15px rgba(94, 159, 61, 1),
+    0 0 20px rgba(115, 175, 64, 1), 0 0 25px rgba(94, 159, 61, 1);
+}
+#fireflie_container {
+  position: absolute;
+  position: fixed;
+  left: 1vw;
+  top: 10vw;
+  width: 0.5vw;
+  height: 0.5vw;
+}
+#unit2 {
+  position: absolute;
+  position: fixed;
+  left: 5vw;
+  top: 5vw;
+  width: 0.5vw;
+  height: 0.5vw;
+  background-color: #f3ef53;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(115, 175, 64, 1), 0 0 15px rgba(94, 159, 61, 1),
+    0 0 20px rgba(115, 175, 64, 1), 0 0 25px rgba(94, 159, 61, 1);
+}
+#fireflie_container2 {
+  position: absolute;
+  position: fixed;
+  left: 5vw;
+  top: 5vw;
+  width: 0.5vw;
+  height: 0.5vw;
+}
+#unit3 {
+  position: absolute;
+  position: fixed;
+  left: 30vw;
+  top: 20vw;
+  width: 0.5vw;
+  height: 0.5vw;
+  background-color: #f3ef53;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(115, 175, 64, 1), 0 0 15px rgba(94, 159, 61, 1),
+    0 0 20px rgba(115, 175, 64, 1), 0 0 25px rgba(94, 159, 61, 1);
+}
+#fireflie_container3 {
+  position: absolute;
+  position: fixed;
+  left: 20vw;
+  top: 25vw;
+  width: 0.5vw;
+  height: 0.5vw;
+}
+
+/**/
+
+#unit4 {
+  position: absolute;
+  position: fixed;
+  left: 10vw;
+  top: 10vw;
+  width: 0.3vw;
+  height: 0.3vw;
+  background-color: #f3ef53;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(115, 175, 64, 1), 0 0 15px rgba(94, 159, 61, 1),
+    0 0 20px rgba(115, 175, 64, 1), 0 0 25px rgba(94, 159, 61, 1);
+}
+#fireflie_container4 {
+  position: absolute;
+  position: fixed;
+  left: 20vw;
+  top: 20vw;
+  width: 0.3vw;
+  height: 0.3vw;
+}
+#unit5 {
+  position: absolute;
+  position: fixed;
+  left: 20vw;
+  top: 20vw;
+  width: 0.3vw;
+  height: 0.3vw;
+  background-color: #f3ef53;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(115, 175, 64, 1), 0 0 15px rgba(94, 159, 61, 1),
+    0 0 20px rgba(115, 175, 64, 1), 0 0 25px rgba(94, 159, 61, 1);
+}
+#fireflie_container5 {
+  position: absolute;
+  position: fixed;
+  left: 20vw;
+  top: 20vw;
+  width: 0.3vw;
+  height: 0.3vw;
+}
+#unit6 {
+  position: absolute;
+  position: fixed;
+  left: 30vw;
+  top: 20vw;
+  width: 0.3vw;
+  height: 0.3vw;
+  background-color: #f3ef53;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(115, 175, 64, 1), 0 0 15px rgba(94, 159, 61, 1),
+    0 0 20px rgba(115, 175, 64, 1), 0 0 25px rgba(94, 159, 61, 1);
+}
+#fireflie_container6 {
+  position: absolute;
+  position: fixed;
+  left: 20vw;
+  top: 20vw;
+  width: 0.3vw;
+  height: 0.3vw;
+}
+#unit7 {
+  position: absolute;
+  position: fixed;
+  left: 30vw;
+  top: 18vw;
+  width: 0.5vw;
+  height: 0.5vw;
+  background-color: #f3ef53;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(115, 175, 64, 1), 0 0 15px rgba(94, 159, 61, 1),
+    0 0 20px rgba(115, 175, 64, 1), 0 0 25px rgba(94, 159, 61, 1);
+}
+#fireflie_container7 {
+  position: absolute;
+  position: fixed;
+  left: 60vw;
+  top: 20vw;
+  width: 0.5vw;
+  height: 0.5vw;
+}
+#unit8 {
+  position: absolute;
+  position: fixed;
+  left: 50vw;
+  top: 49vw;
+  width: 0.5vw;
+  height: 0.5vw;
+  background-color: #f3ef53;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(115, 175, 64, 1), 0 0 15px rgba(94, 159, 61, 1),
+    0 0 20px rgba(115, 175, 64, 1), 0 0 25px rgba(94, 159, 61, 1);
+}
+#fireflie_container8 {
+  position: absolute;
+  position: fixed;
+  left: 50vw;
+  top: 20vw;
+  width: 0.5vw;
+  height: 0.5vw;
+}
+
+/**/
+
+.glow {
+  animation-name: glow_kf;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease-in-out;
+}
+@keyframes glow_kf {
+  0% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  25% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+  }
+  50% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  100% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+    opacity: 0%;
+  }
+}
+.glow2 {
+  animation-name: glow2_kf;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease-in-out;
+}
+@keyframes glow2_kf {
+  0% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  25% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+    opacity: 0%;
+  }
+  50% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  100% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+  }
+}
+.glow3 {
+  animation-name: glow3_kf;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease-in-out;
+}
+@keyframes glow3_kf {
+  0% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  25% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+  }
+  50% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  100% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+    opacity: 0%;
+  }
+}
+.glow4 {
+  animation-name: glow4_kf;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease-in-out;
+}
+@keyframes glow4_kf {
+  0% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  25% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+  }
+  50% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  100% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+    opacity: 0%;
+  }
+}
+.glow5 {
+  animation-name: glow5_kf;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease-in-out;
+}
+@keyframes glow5_kf {
+  0% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+    opacity: 0%;
+  }
+  25% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+  }
+  50% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  100% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+  }
+}
+.glow6 {
+  animation-name: glow6_kf;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease-in-out;
+}
+@keyframes glow6_kf {
+  0% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  25% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+  }
+  50% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  100% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+    opacity: 0%;
+  }
+}
+.glow7 {
+  animation-name: glow7_kf;
+  animation-duration: 11s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease-in-out;
+}
+@keyframes glow7_kf {
+  0% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  25% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+  }
+  50% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  100% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+    opacity: 0%;
+  }
+}
+.glow8 {
+  animation-name: glow8_kf;
+  animation-duration: 14s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-timing-function: ease-in-out;
+}
+@keyframes glow8_kf {
+  0% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  25% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+  }
+  50% {
+    filter: drop-shadow(0px 0px 0.1vw yellow) blur(0.1vw);
+  }
+  100% {
+    filter: drop-shadow(0px 0px 1vw yellow) blur(0.3vw);
+    opacity: 0%;
+  }
+}
+.fly {
+  animation-name: fly_kf;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.06, 0.3, 1, 1);
+  animation-direction: alternate-reverse;
+}
+@keyframes fly_kf {
+  0% {
+    transform: scale(1, 1) translatex(-10vw);
+  }
+  25% {
+    transform: scale(1, 1) translatex(-1vw);
+  }
+  50% {
+    transform: scale(1, 1) translatex(20vw);
+  }
+  75% {
+    transform: scale(1, 1) translatex(32vw);
+  }
+  90% {
+    transform: scale(0.8, 1.1) translatex(-11vw);
+  }
+  100% {
+    transform: scale(1, 1) translatex(-10vw);
+  }
+}
+.fly2 {
+  animation-name: fly2_kf;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.51, 0.23, 0.54, 0.83);
+  animation-direction: alternate-reverse;
+}
+@keyframes fly2_kf {
+  0% {
+    transform: scale(1, 1) translatex(-10vw);
+  }
+  25% {
+    transform: scale(1, 1) translatex(-1vw);
+  }
+  50% {
+    transform: scale(1, 1) translatex(20vw);
+  }
+  75% {
+    transform: scale(1, 1) translatex(32vw);
+  }
+  90% {
+    transform: scale(0.8, 1.1) translatex(-11vw);
+  }
+  100% {
+    transform: scale(1, 1) translatex(-10vw);
+  }
+}
+.fly3 {
+  animation-name: fly3_kf;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.06, 0.3, 1, 1);
+  animation-direction: alternate-reverse;
+}
+@keyframes fly3_kf {
+  0% {
+    transform: scale(1, 1) translatex(-10vw);
+  }
+  25% {
+    transform: scale(1, 1) translatex(-1vw);
+  }
+  50% {
+    transform: scale(1, 1) translatex(20vw);
+  }
+  75% {
+    transform: scale(1, 1) translatex(32vw);
+  }
+  90% {
+    transform: scale(0.8, 1.1) translatex(-11vw);
+  }
+  100% {
+    transform: scale(1, 1) translatex(-10vw);
+  }
+}
+.fly4 {
+  animation-name: fly4_kf;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.06, 0.3, 1, 1);
+  animation-direction: alternate-reverse;
+}
+@keyframes fly4_kf {
+  0% {
+    transform: scale(1, 1) translatex(-10vw);
+  }
+  25% {
+    transform: scale(1, 1) translatex(-1vw);
+  }
+  50% {
+    transform: scale(1, 1) translatex(20vw);
+  }
+  75% {
+    transform: scale(1, 1) translatex(32vw);
+  }
+  90% {
+    transform: scale(0.8, 1.1) translatex(-11vw);
+  }
+  100% {
+    transform: scale(1, 1) translatex(-10vw);
+  }
+}
+.fly5 {
+  animation-name: fly5_kf;
+  animation-duration: 13s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.51, 0.23, 0.54, 0.83);
+  animation-direction: alternate-reverse;
+}
+@keyframes fly5_kf {
+  0% {
+    transform: scale(1, 1) translatex(-10vw);
+  }
+  25% {
+    transform: scale(1, 1) translatex(-1vw);
+  }
+  50% {
+    transform: scale(1, 1) translatex(20vw);
+  }
+  75% {
+    transform: scale(1, 1) translatex(32vw);
+  }
+  90% {
+    transform: scale(0.8, 1.1) translatex(-11vw);
+  }
+  100% {
+    transform: scale(1, 1) translatex(-10vw);
+  }
+}
+.fly6 {
+  animation-name: fly6_kf;
+  animation-duration: 21s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.06, 0.3, 1, 1);
+  animation-direction: alternate-reverse;
+}
+@keyframes fly6_kf {
+  0% {
+    transform: scale(1, 1) translatex(-10vw);
+  }
+  25% {
+    transform: scale(1, 1) translatex(-1vw);
+  }
+  50% {
+    transform: scale(1, 1) translatex(20vw);
+  }
+  75% {
+    transform: scale(1, 1) translatex(32vw);
+  }
+  90% {
+    transform: scale(0.8, 1.1) translatex(-11vw);
+  }
+  100% {
+    transform: scale(1, 1) translatex(-10vw);
+  }
+}
+.fly7 {
+  animation-name: fly7_kf;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.06, 0.3, 1, 1);
+  animation-direction: alternate-reverse;
+}
+@keyframes fly7_kf {
+  0% {
+    transform: scale(1, 1) translatex(10vw);
+  }
+  25% {
+    transform: scale(1, 1) translatex(1vw);
+  }
+  50% {
+    transform: scale(1, 1) translatex(-20vw);
+  }
+  75% {
+    transform: scale(1, 1) translatex(-32vw);
+  }
+  90% {
+    transform: scale(0.8, 1.1) translatex(11vw);
+  }
+  100% {
+    transform: scale(1, 1) translatex(10vw);
+  }
+}
+.fly8 {
+  animation-name: fly8_kf;
+  animation-duration: 13s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.06, 0.3, 1, 1);
+  animation-direction: alternate-reverse;
+}
+@keyframes fly8_kf {
+  0% {
+    transform: scale(1, 1) translatex(10vw);
+  }
+  25% {
+    transform: scale(1, 1) translatex(1vw);
+  }
+  50% {
+    transform: scale(1, 1) translatex(-20vw);
+  }
+  75% {
+    transform: scale(1, 1) translatex(-32vw);
+  }
+  90% {
+    transform: scale(0.8, 1.1) translatex(11vw);
+  }
+  100% {
+    transform: scale(1, 1) translatex(10vw);
+  }
 }
