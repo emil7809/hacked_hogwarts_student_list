@@ -5,7 +5,7 @@ body {
 #buttons {
   position: absolute;
   z-index: 10;
-  top: 1vw;
+  top: 1.2vw;
   left: 22vw;
   display: grid;
   grid-template-columns: 1fr;
@@ -27,7 +27,7 @@ body {
 #buttons3 {
   position: absolute;
   z-index: 10;
-  top: 7.5vw;
+  top: 7.8vw;
   left: 72vw;
   display: grid;
   grid-template-columns: 1fr;
@@ -233,6 +233,15 @@ tbody {
   z-index: 52;
 }
 
+#crest {
+  background-size: cover;
+  position: absolute;
+  left: 34vw;
+  top: 3.5vw;
+  height: 5.3vw;
+  width: 5.3vw;
+}
+
 img {
   position: absolute;
   left: 35vw;
@@ -367,13 +376,6 @@ img {
   top: 19vw;
 }
 
-#hack {
-  position: absolute;
-  width: 100%;
-  height: 56vw;
-  top: 0;
-}
-
 #desplay_number_of_students {
   position: absolute;
   width: 20vw;
@@ -424,10 +426,11 @@ img {
 
 #number_container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   margin-top: -2.5vw;
   margin-left: 0.8vw;
   grid-gap: 2vw;
+  width: 23vw;
 }
 
 .hidden {

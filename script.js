@@ -32,17 +32,17 @@ function start() {
   document.querySelector(".blood").textContent = "Blood-Status: ";
 
   document.querySelector("#search").addEventListener("input", searchImput);
-  document.querySelector("#unit").addEventListener("click", hackIt);
+  document.querySelector("#unit").addEventListener("click", hackTheSystem);
 
   getFamilies();
   loadJSON();
   makeButtons();
-}
+} 
 
-function hackIt() {
+function hackTheSystem() {
   console.log("Welcome");
 
-  document.querySelector("#unit").removeEventListener("click", hackIt);
+  document.querySelector("#unit").removeEventListener("click", hackTheSystem);
   systemHacked = true;
 
   const me = Object.create(Student);
@@ -74,13 +74,9 @@ function searchImput(evt) {
 }
 
 function makeButtons() {
-  document
-    .querySelectorAll("[data-action='filter']")
-    .forEach((button) => button.addEventListener("click", selectFilter));
+  document.querySelectorAll("[data-action='filter']").forEach((button) => button.addEventListener("click", selectFilter));
 
-  document
-    .querySelectorAll("[data-action='sort']")
-    .forEach((button) => button.addEventListener("click", selectSort));
+  document.querySelectorAll("[data-action='sort']").forEach((button) => button.addEventListener("click", selectSort));
 }
 
 function loadJSON() {
@@ -109,7 +105,7 @@ function prepareFamilies(familyData) {
 function prepareObjects(jsonData) {
   let idIterator = 0;
   jsonData.forEach((jsonObject) => {
-    //crate new opject
+    //crate new object
     const student = Object.create(Student);
 
     //exstrackt data from json objekt
@@ -285,8 +281,6 @@ function displayList(studenstToDisplay) {
 
   // build a new list
   studenstToDisplay.forEach(displayStudents);
-
-  console.log(expelledStudents);
 }
 
 function displayStudents(student) {
@@ -302,9 +296,7 @@ function displayStudents(student) {
   clone.querySelector("[data-field=lastName]").addEventListener("click", () => {
     popUp(student);
   });
-  clone
-    .querySelector("[data-field=firstName]")
-    .addEventListener("click", () => {
+  clone.querySelector("[data-field=firstName]").addEventListener("click", () => {
       popUp(student);
     });
   clone.querySelector("[data-field=house]").addEventListener("click", () => {
@@ -394,21 +386,25 @@ function popUp(student) {
         "rgb(0, 75, 35)";
       document.querySelector("#house_stripe_sprite").style.backgroundColor =
         "rgb(223, 224, 224)";
+        document.querySelector("#crest").style.backgroundImage = "url('png/s.png')";
     } else if (student.popupHouse === "Ravenclaw") {
       document.querySelector("#house_stripe_container").style.backgroundColor =
         "rgb(2, 21, 104)";
       document.querySelector("#house_stripe_sprite").style.backgroundColor =
         "rgb(223, 224, 224)";
+        document.querySelector("#crest").style.backgroundImage = "url('png/r.png')";
     } else if (student.popupHouse === "Hufflepuff") {
       document.querySelector("#house_stripe_container").style.backgroundColor =
         "rgb(221, 180, 0)";
       document.querySelector("#house_stripe_sprite").style.backgroundColor =
         "black";
+        document.querySelector("#crest").style.backgroundImage = "url('png/h.png')";
     } else {
       document.querySelector("#house_stripe_container").style.backgroundColor =
         "rgb(121, 0, 0)";
       document.querySelector("#house_stripe_sprite").style.backgroundColor =
         "rgb(221, 180, 0)";
+        document.querySelector("#crest").style.backgroundImage = "url('png/g.png')";
     }
   }
 
@@ -430,6 +426,7 @@ function popUp(student) {
 
     document.querySelector(".prefect_box").removeEventListener("click", clickPrefeckt);
     document.querySelector(".inquistorial_box").removeEventListener("click", clickInquistorialBox);
+    document.querySelector(".expelled_box").removeEventListener("click", expelStudent);
 
     displayList(allStudents);
   };
@@ -439,14 +436,10 @@ function popUp(student) {
   if (student.firstName === "Emily") {
     console.log("lol nope");
   } else {
-    document
-      .querySelector(".expelled_box")
-      .addEventListener("click", expelStudent);
+    document.querySelector(".expelled_box").addEventListener("click", expelStudent);
   }
 
   function expelStudent() {
-    document.querySelector(".expelled_box").removeEventListener("click", expelStudent);
-
     expelledStudents.push(
       allStudents.splice(
         allStudents.findIndex((someStudent) => {
@@ -460,13 +453,13 @@ function popUp(student) {
   }
 
   // make student prefeckt
-  document
-    .querySelector(".prefect_box")
-    .addEventListener("click", clickPrefeckt);
+  document.querySelector(".prefect_box").addEventListener("click", clickPrefeckt);
 
   function clickPrefeckt() {
     if (student.prefect === true) {
       student.prefect = false;
+      document.querySelector(".prefect_box").textContent = "";
+
     } else {
       tryToMakeStudentPrefeckt(student);
     }
@@ -475,18 +468,17 @@ function popUp(student) {
   }
 
   //Make student inquistorial
-  document
-    .querySelector(".inquistorial_box")
-    .addEventListener("click", clickInquistorialBox);
+  document.querySelector(".inquistorial_box").addEventListener("click", clickInquistorialBox);
 
   function clickInquistorialBox() {
     if (systemHacked === true) {
       hackedI();
+    }else if (student.inquisitorialSquad === true) {
+      student.inquisitorialSquad = false;
+      document.querySelector(".inquistorial_box").textContent = "";
     } else if (student.house === "S" || student.bloodstatus === "Pureblood") {
       makeinquisitorialSquad(student);
-    } else if (student.inquisitorialSquad === true) {
-      student.inquisitorialSquad = false;
-    } else {
+    }  else {
       sorry();
     }
   }
@@ -503,7 +495,6 @@ function tryToMakeStudentPrefeckt(selectedStudent) {
 
   //if there is allready 2 prefeckts in the same house
   if (other.length >= 2) {
-    console.log("there can be only two pr. house");
     removeAorB(prefeckts[0], prefeckts[1]);
   } else {
     makePrefeckt(selectedStudent);
@@ -512,14 +503,11 @@ function tryToMakeStudentPrefeckt(selectedStudent) {
   function removeAorB(prefecktsA, prefecktsB) {
     //ask the user to ignore or remove A or B
     document.querySelector("#warning_container").classList.remove("hidden");
-    document
-      .querySelector("#warning_container")
-      .addEventListener("click", closeDialog);
+    
+    document.querySelector(".closebutton").addEventListener("click", closeDialog);
     document.querySelector("#remove_A").addEventListener("click", clickRemoveA);
     document.querySelector("#remove_B").addEventListener("click", clickRemoveB);
 
-    console.log(prefecktsA.firstName);
-    console.log(prefecktsB.firstName);
     //show names on buttons
     document.querySelector("#warning_container #remove_A span").textContent =
       prefecktsA.firstName + prefecktsB.lastName;
@@ -529,15 +517,9 @@ function tryToMakeStudentPrefeckt(selectedStudent) {
     //if user ignor - do nothing
     function closeDialog() {
       document.querySelector("#warning_container").classList.add("hidden");
-      document
-        .querySelector("#warning_container")
-        .removeEventListener("click", closeDialog);
-      document
-        .querySelector("#remove_A")
-        .removeEventListener("click", clickRemoveA);
-      document
-        .querySelector("#remove_B")
-        .removeEventListener("click", clickRemoveB);
+      document.querySelector("#warning_container").removeEventListener("click", closeDialog);
+      document.querySelector("#remove_A").removeEventListener("click", clickRemoveA);
+      document.querySelector("#remove_B").removeEventListener("click", clickRemoveB);
     }
 
     //if remove A
@@ -620,5 +602,7 @@ function showNumberOfStudents() {
   document.querySelector("#Ss").textContent = Sstutents;
 
   document.querySelector("#allS").textContent = allStudents.length;
+
+  document.querySelector("#Xs").textContent = expelledStudents.length;
 
 }
